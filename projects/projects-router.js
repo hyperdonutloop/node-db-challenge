@@ -38,35 +38,21 @@ router.get('/resources', (req, res) => {
     })
 })
 
-// get tasks //CHECK THIS ONE!
+// get tasks 
 router.get('/projects/:id/tasks', (req, res) => {
   const { id } = req.params;
-
   Projects.getTasks(id)
     .then(task => {
-      if (task.length > 0) {
-        res.status(200).json(
-          task.map(newTask => {
-            if (newTask.completed === 0) {
-              return {
-                ...newTask,
-                completed: false
-              }
-            } else {
-              return {
-                ...newTask,
-                completed: true
-              }
-            }
-          })
-        )
+      if (task) {
+        res.status(200).json(task)
       } else {
-        res.status(404).json({ errorMessage: 'The task with the specified ID could not be found' })
+        res.status(404).json({ errorMessage: 'Could not find task with the specified ID'})
       }
     })
     .catch(error => {
       res.status(500).json({ errorMessage: 'Failed to retrieve tasks', error})
     })
+    
 });
 
 router.post('/resources', (req, res) => {
