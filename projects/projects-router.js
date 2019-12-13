@@ -4,18 +4,18 @@ const router = express.Router();
 
 // get all projects
 router.get('/projects', (req, res) => {
-  Projects.getProjects()
-   .then( project => {
-     res.status(200).json(
-       project.map(newProject => {
-         if (newProject.completed === 0) {
+  Projects.getProjects() // running function from projects-model which just returns projects
+   .then(project => { 
+     res.status(200).json(              
+       project.map(projects => {       // mapping through projects because I have to check the boolean in the object
+         if (projects.completed === 0) {  // if completed = 0, return the projects with completed as FALSE
            return {
-             ...newProject,
+             ...projects,
              completed: false
            }
-         } else {
+         } else { // if project shows anything but 0, then return the projects and the completed as TRUE
            return {
-             ...newProject,
+             ...projects,
              completed: true
            }
          }

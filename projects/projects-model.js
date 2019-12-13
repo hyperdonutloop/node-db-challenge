@@ -18,6 +18,7 @@ function getResources() {
 }
 
 // when retrieving a list of tasks project name/project description should be included
+// including description, notes and completed because that is part of tasks
 function getTasks(id) {
   return db('tasks')
     .select(

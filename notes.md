@@ -9,6 +9,7 @@ In the words of Ryan:
   
   - plan out the structure of tables 
   - make sure all tables are related to eachother in a way that is not dumb.
+  - if you have many to many you need an intermediary table
 
 ## Step 1: Install dependencies
 Initialize and add a package.json
@@ -53,4 +54,4 @@ Built out dbConfig.js file
 ## Step 4: Build out Router and Model
 
 - built out projects-Router
-- built out model
+- built out projects model
