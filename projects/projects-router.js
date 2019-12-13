@@ -7,9 +7,10 @@ router.get('/projects', (req, res) => {
   Projects.getProjects() // running function from projects-model which just returns projects
    .then(project => { 
      res.status(200).json(              
-       project.map(projects => {       // mapping through projects because I have to check the boolean in the object
+       project.map(projects => {       // mapping through projects because I have to modify the object 
          if (projects.completed === 0) {  // if completed = 0, return the projects with completed as FALSE
            return {
+             // spreading in projects that already exist, and adding completed
              ...projects,
              completed: false
            }
