@@ -54,4 +54,4 @@ Built out dbConfig.js file
 ## Step 4: Build out Router and Model
 
 - built out projects-Router
-- built out projects model
+- built out projects-model
